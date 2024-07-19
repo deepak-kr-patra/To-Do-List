@@ -15,8 +15,8 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/auth', authRoutes);
-app.use('/tasks', taskRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
 
 app.listen(PORT, () => {
     connectToMongoDB();

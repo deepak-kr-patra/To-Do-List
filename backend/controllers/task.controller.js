@@ -45,7 +45,7 @@ export const addTask = async (req, res) => {
 
         await Promise.all([list.save(), newTask.save()]);
 
-        res.status(201).json({ newTask });
+        res.status(201).json(newTask);
 
     } catch (error) {
         console.log("Error in addTask:", error.message);
@@ -81,7 +81,7 @@ export const removeTask = async (req, res) => {
 
         await List.findByIdAndUpdate(list._id, { $set: newList }, { new: true });
 
-        res.status(200).json({ taskToDelete });
+        res.status(200).json(taskToDelete);
 
     } catch (error) {
         console.log("Error in removeTask:", error.message);
@@ -110,7 +110,7 @@ export const updateTask = async (req, res) => {
 
         let updatedTask = await Task.findByIdAndUpdate(taskToUpdate._id, { $set: newTask }, { new: true });
 
-        res.status(200).json({ updatedTask });
+        res.status(200).json(updatedTask);
 
     } catch (error) {
         console.log("Error in updateTask:", error.message);

@@ -1,68 +1,155 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2));
+    font-family: "Poppins", sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.login-box {
+    /* background: linear-gradient(135deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5)); */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.input-div::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 500;
+    color: #afafaf;
+    transition: .3s;
+    background: #fff;
+    padding: 0 5px;
+    cursor: text;
+}
+
+#username-div-signup::after {
+    content: "Enter Username";
+}
+
+#password-div-signup::after {
+    content: "Enter Password";
+}
+
+#confirmPassword-div-signup::after {
+    content: "Confirm Password";
+}
+
+#username-div-login::after {
+    content: "Enter Your Username";
+}
+
+#password-div-login::after {
+    content: "Enter Your Password";
+}
+
+.input-div-clicked::after {
+    top: 0;
+    color: #111;
+    font-size: 13px;
+}
+
+.auth-button {
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: #0073e6;
+    color: #fff;
+    font-weight: 500;
+}
+
+.auth-button:hover {
+    background: #0054a8;
+}
+
+.login-instead,
+.signup-instead {
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 50px;
+    border: 1px solid #DADCE0;
+    color: #383838;
+}
+
+.task {
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1));
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.task:hover {
+    transform: scale(1.01);
+}
+
+.add-task-btn {
+    width: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.show-modal-container {
+    visibility: visible;
+}
+
+.bottom-modal-container {
+    position: fixed;
+    bottom: 0;
+    min-height: 168px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.2s;
+    transform: translateY(100%);
+}
+
+.show-bottom-modal-container {
+    transform: translateY(-5%);
+}
+
+.bottom-confirm-modal-container {
+    position: fixed;
+    bottom: 0;
+    min-height: 168px;
+    transition-duration: 0.2s;
+    transform: translateY(100%);
+}
+
+.show-bottom-confirm-modal-container {
+    transform: translateY(-5%);
 }
