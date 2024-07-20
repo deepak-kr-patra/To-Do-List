@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import useAuthUser from '../zustand/useAuthUser';
 
 import MenuBar from '../components/MenuBar';
 import Tasks from '../components/tasks/Tasks';
+import LogoutModal from '../components/LogoutModal';
+import UpdateUsernameModal from '../components/UpdateUsernameModal';
+import UpdatePasswordModal from '../components/UpdatePasswordModal';
 
 
 const Home = () => {
@@ -14,6 +17,11 @@ const Home = () => {
     <div className='flex flex-col w-full h-full'>
       <MenuBar authUser={authUser} />
       <Tasks />
+
+      {/* hidden modals */}
+      <LogoutModal />
+      <UpdateUsernameModal />
+      <UpdatePasswordModal />
     </div>
   )
 }
