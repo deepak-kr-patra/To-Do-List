@@ -1,16 +1,9 @@
 import React from 'react';
-
-import { IoGrid, IoPerson } from "react-icons/io5";
 import { MdLightMode } from "react-icons/md";
-import { BiLogOut } from "react-icons/bi";
-// import ThemeButton from './ThemeButton';
-
-import useLogout from '../hooks/useLogout';
+import Dropdown from './Dropdown';
 
 
 const MenuBar = ({ authUser }) => {
-
-    const { loading, logout } = useLogout();
 
     return (
         <div className='w-full flex items-center justify-between p-2 px-8 border-b-2 bg-whiteee'>
@@ -24,15 +17,8 @@ const MenuBar = ({ authUser }) => {
             </div>
 
             <div className='flex items-center justify-center gap-8'>
-                {loading ? (
-                    <span className='loading loading-spinner'></span>
-                ) : (
-                    <BiLogOut className='text-3xl cursor-pointer' onClick={() => logout()} />
-                )}
-                {/* <IoGrid className='text-3xl' /> */}
-                <IoPerson className='text-3xl' />
+                <Dropdown />
                 <MdLightMode className='text-3xl' />
-                {/* <ThemeButton /> */}
             </div>
         </div>
     )

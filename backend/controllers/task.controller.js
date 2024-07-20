@@ -73,7 +73,7 @@ export const removeTask = async (req, res) => {
         // removing the task id from tasks array of list collection
         const list = await List.findOne({ user: taskToDelete.user });
 
-        list.tasks.pull(taskToDelete._id);
+        await list.tasks.pull(taskToDelete._id);
 
         const newList = { // creating new list object for updating
             tasks: list.tasks
@@ -101,7 +101,7 @@ export const updateTask = async (req, res) => {
         }
 
         if (taskToUpdate.user.toString() !== req.user._id.toString()) {
-            return res.status(401).json({ error: "Unauthorized - Invalid Userrr" });
+            return res.status(401).json({ error: "Unauthorized - Invalid User" });
         }
 
         const newTask = {
