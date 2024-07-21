@@ -46,44 +46,46 @@ const Signup = () => {
   });
 
   return (
-    <div className='flex flex-col items-center justify-center min-w-[500px] mx-auto'>
-      <div className="w-full h-full p-8 rounded-lg shadow-md bg-white login-box">
+    <div className='w-full h-full flex items-center justify-center signup-page'>
+      <div className='flex flex-col items-center justify-center min-w-[500px] mx-auto'>
+        <div className="w-full h-full p-8 rounded-lg shadow-md bg-white login-box">
 
-        <h1 className='mb-8 text-3xl font-semibold text-center text-gray-700'>
-          Sign Up <span className='text-blue-500'>To-Do List</span>
-        </h1>
+          <h1 className='mb-8 text-3xl font-semibold text-center text-gray-700'>
+            Sign Up <span className='text-blue-500'>To-Do List</span>
+          </h1>
 
-        <form onSubmit={handleSubmit} className='flex flex-col'>
-          <div className='input-div relative mb-8' id='username-div-signup'>
-            <input type="text" id='username-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.username} onChange={(e) => setUserInputs({ ...userInputs, username: e.target.value })} />
-          </div>
+          <form onSubmit={handleSubmit} className='flex flex-col'>
+            <div className='input-div relative mb-8' id='username-div-signup'>
+              <input type="text" id='username-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.username} onChange={(e) => setUserInputs({ ...userInputs, username: e.target.value })} />
+            </div>
 
-          <div className='input-div relative mb-8' id='password-div-signup'>
-            <input type="password" id='password-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.password} onChange={(e) => setUserInputs({ ...userInputs, password: e.target.value })} />
-          </div>
+            <div className='input-div relative mb-8' id='password-div-signup'>
+              <input type="password" id='password-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.password} onChange={(e) => setUserInputs({ ...userInputs, password: e.target.value })} />
+            </div>
 
-          <div className='input-div relative mb-8' id='confirmPassword-div-signup'>
-            <input type="password" id='confirmPassword-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.confirmedPassword} onChange={(e) => setUserInputs({ ...userInputs, confirmedPassword: e.target.value })} />
-          </div>
+            <div className='input-div relative mb-8' id='confirmPassword-div-signup'>
+              <input type="password" id='confirmPassword-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.confirmedPassword} onChange={(e) => setUserInputs({ ...userInputs, confirmedPassword: e.target.value })} />
+            </div>
 
-          <div>
-            <button className='btn btn-block btn-sm auth-button' disabled={loading}>
-              {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
-            </button>
-          </div>
+            <div>
+              <button className='btn btn-block btn-sm auth-button' disabled={loading}>
+                {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
+              </button>
+            </div>
 
-          <div className="divider before:h-[1.6px] after:h-[1.6px]">OR</div>
+            <div className="divider before:h-[1.6px] after:h-[1.6px]">OR</div>
 
-          <div className='login-instead'>
-            Already have an account?
-            <span className='h-12 flex items-center'>
-              <Link to="/login" className='hover:underline text-blue-600'>
-                Login
-              </Link>
-            </span>
-          </div>
+            <div className='login-instead'>
+              Already have an account?
+              <span className='h-12 flex items-center'>
+                <Link to="/login" className='hover:underline text-blue-600'>
+                  Login
+                </Link>
+              </span>
+            </div>
 
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   )

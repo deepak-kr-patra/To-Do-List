@@ -10,7 +10,6 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2));
     font-family: "Poppins", sans-serif;
 }
 
@@ -20,6 +19,12 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+/* styling login and signup page */
+.login-page,
+.signup-page {
+    background: linear-gradient(45deg, rgba(255, 0, 0, 1), rgba(0, 0, 255, 1));
 }
 
 .input-div::after {
@@ -88,6 +93,25 @@ body {
     border-radius: 50px;
     border: 1px solid #DADCE0;
     color: #383838;
+}
+
+/* styling home page */
+.home-page {
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2));
+}
+
+.scrollable {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: auto;
+
+    @media (max-width: 1000px) {
+        scrollbar-width: thin;
+    }
+
+    @media (max-width: 640px) {
+        scrollbar-width: none;
+    }
 }
 
 .task {

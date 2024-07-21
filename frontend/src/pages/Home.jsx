@@ -10,12 +10,9 @@ import UpdatePasswordModal from '../components/UpdatePasswordModal';
 
 
 const Home = () => {
-
-  const { authUser } = useAuthUser();
-
   return (
-    <div className='flex flex-col w-full h-full'>
-      <MenuBar authUser={authUser} />
+    <div className='flex flex-col w-full h-full home-page'>
+      <MenuBar />
       <Tasks />
 
       {/* hidden modals */}
