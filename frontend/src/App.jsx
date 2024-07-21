@@ -11,24 +11,28 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import useAuthUser from './zustand/useAuthUser';
+import useScreenWidth from './zustand/useScreenwidth';
 
 
 function App() {
 
   const { authUser } = useAuthUser();
+  const { setScreenWidth } = useScreenWidth();
+
+  window.onresize = () => {
+    setScreenWidth(window.innerWidth);
+  };
 
   return (
     <div className='wrapper h-full w-full flex items-center justify-center'>
-      <>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
-            <Route path="login/*" element={authUser ? <Navigate to={"/"} /> : <Login />} />
-            <Route path="signup/*" element={authUser ? <Navigate to={"/"} /> : <Signup />} />
-          </Routes>
-        </BrowserRouter>
-        <Toaster />
-      </>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />} />
+          <Route path="login/*" element={authUser ? <Navigate to={"/"} /> : <Login />} />
+          <Route path="signup/*" element={authUser ? <Navigate to={"/"} /> : <Signup />} />
+        </Routes>
+      </BrowserRouter>
+      <Toaster />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Task from './Task';
 import AddTaskButton from './AddTaskButton';
@@ -15,9 +15,14 @@ import useTasks from '../../zustand/useTasks';
 const Tasks = () => {
 
   const { loading, tasks } = useGetTasks();
-  console.log(tasks);
 
   const { setTaskToRemove, setTaskToUpdate, setTaskToUpdateTitle } = useTasks();
+
+  useEffect(() => {
+    const tasksContainer = document.getElementById('tasks-container');
+
+    tasksContainer.scrollHeight > tasksContainer.clientHeight ? tasksContainer.classList.add('scrollable') : tasksContainer.classList.remove('scrollable');
+  });
 
   // to toggle AddTaskModal
   const toggleAddTaskModal = () => {
@@ -30,45 +35,32 @@ const Tasks = () => {
   const toggleRemoveTaskModal = (taskToRemoveID) => {
     const removeTaskModal = document.getElementById('remove-task-modal-container');
 
-    if (removeTaskModal.classList.contains('show-modal-container')) {
-      removeTaskModal.classList.remove('show-modal-container');
-      setTaskToRemove(null);
-    } else {
-      removeTaskModal.classList.add('show-modal-container');
-      setTaskToRemove(taskToRemoveID);
-    }
+    removeTaskModal.classList.contains('show-modal-container') ? removeTaskModal.classList.remove('show-modal-container') : removeTaskModal.classList.add('show-modal-container');
+
+    setTaskToRemove(taskToRemoveID);
   };
 
   // to toggle UpdateTaskModal
   const toggleUpdateTaskModal = (taskToUpdateID, taskTitle) => {
     const updateTaskModal = document.getElementById('update-task-modal-container');
 
-    if (updateTaskModal.classList.contains('show-modal-container')) {
-      updateTaskModal.classList.remove('show-modal-container');
-      setTaskToUpdate(null);
-      setTaskToUpdateTitle("");
-    } else {
-      updateTaskModal.classList.add('show-modal-container');
-      setTaskToUpdate(taskToUpdateID);
-      setTaskToUpdateTitle(taskTitle);
-    }
+    updateTaskModal.classList.contains('show-modal-container') ? updateTaskModal.classList.remove('show-modal-container') : updateTaskModal.classList.add('show-modal-container');
+
+    setTaskToUpdate(taskToUpdateID);
+    setTaskToUpdateTitle(taskTitle);
   };
 
   // to toggle FinishTaskModal
   const toggleFinishTaskModal = (taskToFinishID) => {
     const finishTaskModal = document.getElementById('finish-task-modal-container');
 
-    if (finishTaskModal.classList.contains('show-modal-container')) {
-      finishTaskModal.classList.remove('show-modal-container');
-      setTaskToRemove(null);
-    } else {
-      finishTaskModal.classList.add('show-modal-container');
-      setTaskToRemove(taskToFinishID);
-    }
+    finishTaskModal.classList.contains('show-modal-container') ? finishTaskModal.classList.remove('show-modal-container') : finishTaskModal.classList.add('show-modal-container');
+
+    setTaskToRemove(taskToFinishID);
   };
 
   return (
-    <div className='relative w-full h-full flex flex-col items-center justify-start p-8 gap-8 overflow-y-scroll'>
+    <div className='relative w-full h-full flex flex-col items-center justify-start p-8 gap-8' id='tasks-container'>
       {loading ? (
         <span className='loading loading-spinner'></span>
       ) : (
@@ -99,17 +91,3 @@ const Tasks = () => {
 }
 
 export default Tasks
-
-
-
-{/* <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} />
-      <Task task={"asa"} index={0} /> */}

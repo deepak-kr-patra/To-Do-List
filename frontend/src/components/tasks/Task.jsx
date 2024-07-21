@@ -26,14 +26,12 @@ const Task = ({ task, index, toggleRemoveTaskModal, toggleUpdateTaskModal, toggl
                 selectedTasks.push(task._id);
             }
             setSelectedTasks(selectedTasks);
-            console.log("array", selectedTasks);
         } else {
             const index = selectedTasks.findIndex(selectedTask => selectedTask === task._id);
             if (index !== -1) {
                 selectedTasks.splice(index, 1);
             }
             setSelectedTasks(selectedTasks);
-            console.log("array", selectedTasks);
         }
     };
 
