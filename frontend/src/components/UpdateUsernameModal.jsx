@@ -29,13 +29,13 @@ const UpdateUsernameModal = () => {
 
     return (
         <div className='modal-container' id='change-username-modal-container'>
-            <div className="modal-box">
-                <h3 className="font-bold text-lg">Enter new username</h3>
+            <div className="modal-box max-sm:p-4">
+                <h3 className="font-bold text-lg max-sm:text-[16px]">Enter new username</h3>
                 <input type="text" placeholder="Type here" className="input p-0 focus:border-none focus:outline-none w-full" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <div className='flex justify-end mt-6 gap-2'>
-                    <button className="btn" onClick={() => closeChangeUsernameModal()}>Cancel</button>
+                    <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2" onClick={() => closeChangeUsernameModal()}>Cancel</button>
 
-                    <button className='btn bg-[#276aa1] hover:bg-[#1d4b71] text-white' disabled={loading} onClick={() => changeUsername()}>
+                    <button className='btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-[#276aa1] hover:bg-[#1d4b71] text-white' disabled={loading} onClick={() => changeUsername()}>
                         {loading ? <span className='loading loading-spinner'></span> : "Update"}
                     </button>
                 </div>

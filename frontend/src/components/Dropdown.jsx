@@ -29,20 +29,19 @@ const Dropdown = () => {
 
     return (
         <div className="dropdown dropdown-bottom dropdown-end">
-            <div tabIndex={0} role="button" className="">
-                <IoPerson className='text-3xl' />
+            <div tabIndex={0} role="button">
+                <IoPerson className='profile-btn' />
             </div>
 
             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <div id='change-username-div' className='p-2 rounded-lg hover:bg-slate-200 cursor-pointer' onClick={() => toggleModals('change-username-div')}>Change Username</div>
-                <div id='change-password-div' className='p-2 rounded-lg hover:bg-slate-200 cursor-pointer' onClick={() => toggleModals('change-password-div')}>Change Password</div>
-                {/* <li><a>Change Password</a></li> */}
+                <div id='change-username-div' className='p-2 max-md:p-1.5 max-sm:p-1 rounded-lg hover:bg-slate-200 cursor-pointer' onClick={() => toggleModals('change-username-div')}>Change Username</div>
+                <div id='change-password-div' className='p-2 max-md:p-1.5 max-sm:p-1 rounded-lg hover:bg-slate-200 cursor-pointer' onClick={() => toggleModals('change-password-div')}>Change Password</div>
 
                 <div className="divider m-0"></div>
 
-                <div className='flex items-center justify-end p-2'>
-                    <div id='logout-btn-div' className='flex items-center justify-center gap-2 p-2 rounded-lg hover:bg-slate-200 cursor-pointer' onClick={() => toggleModals('logout-btn-div')}>
-                        <span className='text-xl'>Logout</span><BiLogOut className='text-2xl' />
+                <div className='flex items-center justify-end px-2 py-1 max-sm:p-0'>
+                    <div id='logout-btn-div' className='flex items-center justify-center gap-2 max-sm:gap-1 p-1 rounded-lg hover:bg-slate-200 cursor-pointer' onClick={() => toggleModals('logout-btn-div')}>
+                        <span className='logout-text'>Logout</span><BiLogOut className='logout-icon' />
                     </div>
                 </div>
             </ul>

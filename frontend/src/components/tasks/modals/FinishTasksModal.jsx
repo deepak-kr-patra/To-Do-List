@@ -23,15 +23,13 @@ const FinishTasksModal = ({ toggleFinishTasksModal }) => {
     };
 
     return (
-        <div className="bottom-confirm-modal-container p-6 rounded-3xl shadow-2xl bg-white" id='finish-tasks-modal-container'>
-            <h3 className="font-bold text-lg">Are the selected tasks complete?</h3>
+        <div className="bottom-confirm-modal-container p-6 max-sm:p-4 rounded-3xl shadow-2xl bg-white" id='finish-tasks-modal-container'>
+            <h3 className="font-bold text-lg max-sm:text-[16px]">Are the selected tasks complete?</h3>
             <div className='flex justify-end mt-6 gap-2'>
-                <button className="btn" onClick={() => toggleFinishTasksModal()}>Cancel</button>
-                {loading ? (
-                    <span className='loading loading-spinner'></span>
-                ) : (
-                    <button className="btn bg-[#14791b] hover:bg-[#125815] text-white" onClick={() => finishTasks()}>Complete</button>
-                )}
+                <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2" onClick={() => toggleFinishTasksModal()}>Cancel</button>
+                <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-[#14791b] hover:bg-[#125815] text-white" onClick={() => finishTasks()} disabled={loading}>
+                    {loading ? <span className='loading loading-spinner'></span> : "Complete"}
+                </button>
             </div>
         </div>
     )

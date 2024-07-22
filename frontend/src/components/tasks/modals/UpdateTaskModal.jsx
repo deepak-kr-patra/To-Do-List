@@ -16,15 +16,13 @@ const UpdateTaskModal = ({ toggleUpdateTaskModal }) => {
 
     return (
         <div className='modal-container' id='update-task-modal-container'>
-            <div className="modal-box">
+            <div className="modal-box max-sm:p-4">
                 <input type="text" className="input p-0 focus:border-none focus:outline-none w-full" value={taskToUpdateTitle} onChange={(e) => setTaskToUpdateTitle(e.target.value)} />
                 <div className='flex justify-end mt-6 gap-2'>
-                    <button className="btn" onClick={() => toggleUpdateTaskModal(null, "")}>Cancel</button>
-                    {loading ? (
-                        <span className='loading loading-spinner'></span>
-                    ) : (
-                        <button className="btn bg-[#276aa1] hover:bg-[#1d4b71] text-white" onClick={() => editTask()}>Update</button>
-                    )}
+                    <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2" onClick={() => toggleUpdateTaskModal(null, "")}>Cancel</button>
+                    <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-[#276aa1] hover:bg-[#1d4b71] text-white" onClick={() => editTask()} disabled={loading}>
+                        {loading ? <span className='loading loading-spinner'></span> : "Update"}
+                    </button>
                 </div>
             </div>
         </div>

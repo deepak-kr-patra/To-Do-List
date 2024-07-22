@@ -38,7 +38,7 @@ const UpdatePasswordModal = () => {
 
     return (
         <div className='modal-container' id='change-password-modal-container'>
-            <div className="modal-box">
+            <div className="modal-box max-sm:p-4">
                 <div className='flex flex-col'>
                     <div className='mb-4'>
                         <label htmlFor="old-password-input" className='ml-2 cursor-pointer font-extrabold'>Current Password</label>
@@ -56,9 +56,9 @@ const UpdatePasswordModal = () => {
                     </div>
 
                     <div className='flex justify-end gap-2'>
-                        <button className="btn" onClick={() => closeChangePasswordModal()}>Cancel</button>
+                        <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2" onClick={() => closeChangePasswordModal()}>Cancel</button>
 
-                        <button className='btn bg-[#276aa1] hover:bg-[#1d4b71] text-white' disabled={loading} onClick={() => changePassword()}>
+                        <button className='btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-[#276aa1] hover:bg-[#1d4b71] text-white' disabled={loading} onClick={() => changePassword()}>
                             {loading ? <span className='loading loading-spinner'></span> : "Update"}
                         </button>
                     </div>
