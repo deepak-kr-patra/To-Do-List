@@ -61,21 +61,22 @@ const Tasks = () => {
 
   return (
     <div className='relative w-full h-full flex flex-col items-center justify-start p-8 max-sm:p-2 max-sm:py-4 gap-8 max-sm:gap-4' id='tasks-container'>
-      {loading ? (
-        <span className='loading loading-spinner'></span>
-      ) : (
-        <>
-          {tasks.map((task, index) =>
-            <Task
-              key={index}
-              task={task}
-              index={index + 1}
-              toggleRemoveTaskModal={toggleRemoveTaskModal}
-              toggleUpdateTaskModal={toggleUpdateTaskModal}
-              toggleFinishTaskModal={toggleFinishTaskModal}
-            />)
-          }
-        </>
+
+      {loading && [...Array(3)].map((_, idx) => <div key={idx} className="skeleton opacity-75 h-16 max-sm:h-8 w-full"></div>)}
+
+      {!loading && tasks.length > 0 && tasks.map((task, index) =>
+        <Task
+          key={index}
+          task={task}
+          index={index + 1}
+          toggleRemoveTaskModal={toggleRemoveTaskModal}
+          toggleUpdateTaskModal={toggleUpdateTaskModal}
+          toggleFinishTaskModal={toggleFinishTaskModal}
+        />)
+      }
+
+      {!loading && tasks.length === 0 && (
+        <p>You have no pending tasks!</p>
       )}
 
       <AddTaskButton toggleAddTaskModal={toggleAddTaskModal} />
