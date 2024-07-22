@@ -39,21 +39,21 @@ const SelectedTasksModal = () => {
 
   return (
     <>
-      <div className="bottom-modal-container p-6 gap-4 rounded-3xl shadow-2xl bg-white" id='selected-tasks-modal-container'>
-        <div className='flex justify-center gap-12'>
+      <div className="bottom-modal-container p-6 max-sm:p-4 gap-4 rounded-3xl shadow-2xl bg-white" id='selected-tasks-modal-container'>
+        <div className='flex justify-center gap-12 max-sm:gap-8'>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <FaClipboardCheck className='text-2xl cursor-pointer' onClick={() => toggleFinishTasksModal()} />
-            <p>Finish</p>
+            <FaClipboardCheck className='modal-iconss text-2xl max-sm:text-lg cursor-pointer' onClick={() => toggleFinishTasksModal()} />
+            <p className='max-sm:text-sm'>Finish</p>
           </div>
 
           <div className='flex flex-col items-center justify-center gap-2'>
-            <BsTrashFill className='text-2xl cursor-pointer' onClick={() => toggleRemoveTasksModal()} />
-            <p>Delete</p>
+            <BsTrashFill className='modal-iconss text-2xl max-sm:text-lg cursor-pointer' onClick={() => toggleRemoveTasksModal()} />
+            <p className='max-sm:text-sm'>Delete</p>
           </div>
         </div>
 
         <div className='w-full flex justify-end'>
-          <button className="btn" onClick={() => emptyOnCancel()}>Cancel</button>
+          <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2" onClick={() => emptyOnCancel()}>Cancel</button>
         </div>
 
       </div>
@@ -65,12 +65,3 @@ const SelectedTasksModal = () => {
 }
 
 export default SelectedTasksModal
-
-
-
-{/* <button className="btn" onClick={() => toggleAddTaskModal()}>Cancel</button>
-          {loading ? (
-            <span className='loading loading-spinner'></span>
-          ) : (
-            <button className="btn bg-[#276aa1] hover:bg-[#1d4b71] text-white" onClick={() => saveTask()}>Save</button>
-          )} */}

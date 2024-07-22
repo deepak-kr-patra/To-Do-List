@@ -16,16 +16,14 @@ const AddTaskModal = ({ toggleAddTaskModal }) => {
 
     return (
         <div className='modal-container' id='add-task-modal-container'>
-            <div className="modal-box">
-                <h3 className="font-bold text-lg">Add a task</h3>
+            <div className="modal-box max-sm:p-4">
+                <h3 className="font-bold text-lg max-sm:text-[16px]">Add a task</h3>
                 <input type="text" placeholder="Type here" className="input p-0 focus:border-none focus:outline-none w-full" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <div className='flex justify-end mt-6 gap-2'>
-                    <button className="btn" onClick={() => toggleAddTaskModal()}>Cancel</button>
-                    {loading ? (
-                        <span className='loading loading-spinner'></span>
-                    ) : (
-                        <button className="btn bg-[#276aa1] hover:bg-[#1d4b71] text-white" disabled={!title} onClick={() => saveTask()}>Save</button>
-                    )}
+                    <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2" onClick={() => toggleAddTaskModal()}>Cancel</button>
+                    <button className="btn max-sm:min-h-10 max-sm:h-10 max-sm:px-2 bg-[#276aa1] hover:bg-[#1d4b71] text-white" onClick={() => saveTask()} disabled={!title}>
+                        {loading ? <span className='loading loading-spinner'></span> : "Save"}
+                    </button>
                 </div>
             </div>
         </div>
@@ -33,22 +31,3 @@ const AddTaskModal = ({ toggleAddTaskModal }) => {
 }
 
 export default AddTaskModal
-
-
-
-{/* <dialog id="my_modal_1" className="modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Add a task</h3>
-                    <input type="text" placeholder="Type here" className="input p-0 focus:border-none focus:outline-none w-full" value={title} onChange={(e) => setTitle(e.target.value)} />
-                    <div className="modal-action">
-                        <form method="dialog" className='flex gap-2'>
-                            <button className="btn">Cancel</button>
-                            {loading ? (
-                                <span className='loading loading-spinner'></span>
-                            ) : (
-                                <button className="btn bg-[#276aa1] hover:bg-[#1d4b71] text-white" disabled={!title} onClick={() => saveTask()}>Save</button>
-                            )}
-                        </form>
-                    </div>
-                </div>
-            </dialog> */}
