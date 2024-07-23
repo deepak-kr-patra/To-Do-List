@@ -16,8 +16,8 @@ const FinishTasksModal = ({ toggleFinishTasksModal }) => {
         }
     });
 
-    const finishTasks = () => {
-        removeTasks(selectedTasks);
+    const finishTasks = async () => {
+        await removeTasks(selectedTasks);
         setSelectedTasks([]);
         toggleFinishTasksModal();
     };
