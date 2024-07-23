@@ -1,6 +1,7 @@
 import React from 'react'
 import useRemoveTask from '../../../hooks/useRemoveTask';
 import useTasks from '../../../zustand/useTasks';
+import toast from 'react-hot-toast';
 
 
 const FinishTaskModal = ({ toggleFinishTaskModal }) => {
@@ -8,8 +9,9 @@ const FinishTaskModal = ({ toggleFinishTaskModal }) => {
     const { loading, removeTask } = useRemoveTask();
     const { taskToRemove } = useTasks();
 
-    const finishTask = () => {
-        removeTask(taskToRemove);
+    const finishTask = async () => {
+        await removeTask(taskToRemove);
+        toast.success("Well done. Keep going!");
         toggleFinishTaskModal(null);
     };
 

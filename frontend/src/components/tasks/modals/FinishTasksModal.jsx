@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import useTasks from '../../../zustand/useTasks';
 import useRemoveTasks from '../../../hooks/useRemoveTasks';
+import toast from 'react-hot-toast';
 
 
 const FinishTasksModal = ({ toggleFinishTasksModal }) => {
@@ -19,6 +20,7 @@ const FinishTasksModal = ({ toggleFinishTasksModal }) => {
     const finishTasks = async () => {
         await removeTasks(selectedTasks);
         setSelectedTasks([]);
+        toast.success("Well done. Keep going!");
         toggleFinishTasksModal();
     };
 
