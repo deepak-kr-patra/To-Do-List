@@ -7,10 +7,12 @@ const useRemoveTasks = () => {
     const [loading, setLoading] = useState(false);
     const { tasks, setTasks } = useTasks();
 
-    const removeTasks = (tasksToRemoveIDs) => {
+    const removeTasks = async (tasksToRemoveIDs) => {
         setLoading(true);
         try {
-            tasksToRemoveIDs.map(async (taskToRemoveID) => {
+            for (let idx = 0; idx < tasksToRemoveIDs.length; idx++) {
+                const taskToRemoveID = tasksToRemoveIDs[idx];
+
                 const res = await fetch(`/api/tasks/remove/${taskToRemoveID}`, {
                     method: "DELETE",
                     headers: {
@@ -29,7 +31,7 @@ const useRemoveTasks = () => {
                 }
 
                 setTasks(tasks);
-            });
+            };
 
         } catch (error) {
             toast.error(error.message);
@@ -45,25 +47,23 @@ export default useRemoveTasks
 
 
 
-// for (let idx = 0; idx < tasksToRemoveIDs.length; idx++) {
-            //     const taskToRemoveID = tasksToRemoveIDs[idx];
+// tasksToRemoveIDs.map(async (taskToRemoveID) => {
+//     const res = await fetch(`/api/tasks/remove/${taskToRemoveID}`, {
+//         method: "DELETE",
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     });
 
-            //     const res = await fetch(`/api/tasks/remove/${taskToRemoveID}`, {
-            //         method: "DELETE",
-            //         headers: {
-            //             "Content-Type": "application/json"
-            //         }
-            //     });
+//     const data = await res.json();
+//     if (data.error) {
+//         throw new Error(data.error);
+//     }
 
-            //     const data = await res.json();
-            //     if (data.error) {
-            //         throw new Error(data.error);
-            //     }
+//     const index = tasks.findIndex(task => task._id === taskToRemoveID);
+//     if (index !== -1) {
+//         tasks.splice(index, 1);
+//     }
 
-            //     const index = tasks.findIndex(task => task._id === taskToRemoveID);
-            //     if (index !== -1) {
-            //         tasks.splice(index, 1);
-            //     }
-
-            //     setTasks(tasks);
-            // };
+//     setTasks(tasks);
+// });
