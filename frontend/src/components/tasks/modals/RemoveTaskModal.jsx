@@ -8,8 +8,8 @@ const RemoveTaskModal = ({ toggleRemoveTaskModal }) => {
     const { loading, removeTask } = useRemoveTask();
     const { taskToRemove } = useTasks();
 
-    const deleteTask = () => {
-        removeTask(taskToRemove);
+    const deleteTask = async () => {
+        await removeTask(taskToRemove);
         toggleRemoveTaskModal(null);
     };
 

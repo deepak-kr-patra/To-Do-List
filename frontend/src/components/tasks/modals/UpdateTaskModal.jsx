@@ -8,8 +8,8 @@ const UpdateTaskModal = ({ toggleUpdateTaskModal }) => {
     const { loading, updateTask } = useUpdateTask();
     const { taskToUpdate, taskToUpdateTitle, setTaskToUpdateTitle } = useTasks();
 
-    const editTask = () => {
-        updateTask(taskToUpdateTitle, taskToUpdate);
+    const editTask = async () => {
+        await updateTask(taskToUpdateTitle, taskToUpdate);
         setTaskToUpdateTitle("");
         toggleUpdateTaskModal(null, "");
     };

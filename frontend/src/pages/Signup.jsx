@@ -47,7 +47,7 @@ const Signup = () => {
   return (
     <div className='w-full h-full flex items-center justify-center signup-page'>
       <div className='flex flex-col items-center justify-center min-w-[500px] max-sm:min-w-fit mx-auto'>
-        <div className="w-full h-full p-8 max-sm:p-6 max-sm:px-4 rounded-lg shadow-md bg-white login-box">
+        <div className="w-full h-full p-8 max-sm:p-6 max-sm:px-4 rounded-lg shadow-md bg-white">
 
           <h1 className='mb-8 max-sm:mb-6 text-3xl max-sm:text-2xl font-semibold text-center text-gray-700'>
             Sign Up <span className='text-blue-600'>To-Do List</span>
