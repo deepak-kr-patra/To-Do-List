@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import useLogin from '../hooks/useLogin';
 import { Link } from 'react-router-dom';
+import useLogin from '../hooks/useLogin';
+import useScreenWidth from '../zustand/useScreenwidth';
 
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const { loading, login } = useLogin();
+  const { screenWidth } = useScreenWidth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,10 +41,12 @@ const Login = () => {
     toggleLabel(passwordDiv, "password-div-input-login");
   });
 
+  const boxWidth = screenWidth <= 550 ? "w-[90%]" : "w-[500px]";
+
   return (
     <div className='w-full h-full flex items-center justify-center login-page'>
-      <div className='flex flex-col items-center justify-center min-w-[500px] max-sm:min-w-fit mx-auto'>
-        <div className="w-full h-full p-8 rounded-lg shadow-md bg-white login-box">
+      <div className={`flex flex-col items-center justify-center ${boxWidth} mx-auto`}>
+        <div className="w-full h-full p-8 max-sm:p-6 max-sm:px-3 rounded-lg shadow-md bg-white">
 
           <h1 className='mb-8 max-sm:mb-6 text-3xl max-sm:text-2xl font-semibold text-center text-gray-700'>
             Login <span className='text-blue-600'>To-Do List</span>

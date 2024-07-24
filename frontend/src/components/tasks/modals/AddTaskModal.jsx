@@ -8,8 +8,8 @@ const AddTaskModal = ({ toggleAddTaskModal }) => {
 
     const [title, setTitle] = useState("");
 
-    const saveTask = () => {
-        addTask(title);
+    const saveTask = async () => {
+        await addTask(title);
         setTitle("");
         toggleAddTaskModal();
     };
