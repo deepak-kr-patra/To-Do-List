@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import useSignup from '../hooks/useSignup';
 import { Link } from 'react-router-dom';
+import useSignup from '../hooks/useSignup';
+import useScreenWidth from '../zustand/useScreenwidth';
 
 
 const Signup = () => {
@@ -12,6 +13,7 @@ const Signup = () => {
   });
 
   const { loading, signup } = useSignup();
+  const {screenWidth} = useScreenWidth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,10 +46,12 @@ const Signup = () => {
     toggleLabel(confirmPDiv, "confirmPassword-div-input-signup");
   });
 
+  const boxWidth = screenWidth <= 550 ? "w-[90%]" : "w-[500px]";
+
   return (
     <div className='w-full h-full flex items-center justify-center signup-page'>
-      <div className='flex flex-col items-center justify-center min-w-[500px] max-sm:min-w-fit mx-auto'>
-        <div className="w-full h-full p-8 max-sm:p-6 max-sm:px-4 rounded-lg shadow-md bg-white">
+      <div className={`flex flex-col items-center justify-center ${boxWidth} mx-auto`}>
+        <div className="w-full h-full p-8 max-sm:p-6 max-sm:px-3 rounded-lg shadow-md bg-white">
 
           <h1 className='mb-8 max-sm:mb-6 text-3xl max-sm:text-2xl font-semibold text-center text-gray-700'>
             Sign Up <span className='text-blue-600'>To-Do List</span>
@@ -91,26 +95,3 @@ const Signup = () => {
 }
 
 export default Signup
-
-
-
-// usernameBox.addEventListener('focusin', function () {
-//   this.classList.add('input-div-clicked');
-// });
-// usernameBox.addEventListener('focusout', function () {
-//   this.classList.remove('input-div-clicked');
-// });
-
-// passwordBox.addEventListener('focusin', function () {
-//   this.classList.add('input-div-clicked');
-// });
-// passwordBox.addEventListener('focusout', function () {
-//   this.classList.remove('input-div-clicked');
-// });
-
-// confirmPBox.addEventListener('focusin', function () {
-//   this.classList.add('input-div-clicked');
-// });
-// confirmPBox.addEventListener('focusout', function () {
-//   this.classList.remove('input-div-clicked');
-// });
