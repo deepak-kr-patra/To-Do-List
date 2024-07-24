@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import Task from './Task';
 import AddTaskButton from './AddTaskButton';
@@ -15,14 +15,21 @@ import useTasks from '../../zustand/useTasks';
 const Tasks = () => {
 
   const { loading, tasks } = useGetTasks();
-
   const { setTaskToRemove, setTaskToUpdate, setTaskToUpdateTitle } = useTasks();
+
+  const lastTaskRef = useRef();
 
   useEffect(() => {
     const tasksContainer = document.getElementById('tasks-container');
 
     tasksContainer.scrollHeight > tasksContainer.clientHeight ? tasksContainer.classList.add('scrollable') : tasksContainer.classList.remove('scrollable');
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      lastTaskRef.current?.scrollIntoView({ behaviour: "smooth" });
+    }, 100);
+  }, [tasks]);
 
   // to toggle AddTaskModal
   const toggleAddTaskModal = () => {
@@ -65,15 +72,16 @@ const Tasks = () => {
       {loading && [...Array(3)].map((_, idx) => <div key={idx} className="skeleton opacity-75 h-16 max-sm:h-8 w-full"></div>)}
 
       {!loading && tasks.length > 0 && tasks.map((task, index) =>
-        <Task
-          key={index}
-          task={task}
-          index={index + 1}
-          toggleRemoveTaskModal={toggleRemoveTaskModal}
-          toggleUpdateTaskModal={toggleUpdateTaskModal}
-          toggleFinishTaskModal={toggleFinishTaskModal}
-        />)
-      }
+        <div className='w-full' key={index} ref={lastTaskRef}>
+          <Task
+            task={task}
+            index={index + 1}
+            toggleRemoveTaskModal={toggleRemoveTaskModal}
+            toggleUpdateTaskModal={toggleUpdateTaskModal}
+            toggleFinishTaskModal={toggleFinishTaskModal}
+          />
+        </div>
+      )}
 
       {!loading && tasks.length === 0 && (
         <p>You have no pending tasks!</p>

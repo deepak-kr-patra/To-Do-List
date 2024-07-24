@@ -25,7 +25,6 @@ const Signup = () => {
 
     inputDiv.addEventListener('focusout', () => {
       const inputField = document.getElementById(inputFieldID);
-      console.log('Input field value changed to:', inputField.value);
 
       if (inputField.value.length > 0) {
         inputDiv.classList.add('input-div-clicked');
