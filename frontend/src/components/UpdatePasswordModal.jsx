@@ -16,14 +16,19 @@ const UpdatePasswordModal = () => {
     });
 
     const [passwordVisibility, setPasswordVisibility] = useState(false);
-    const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(false);
+    const [newPasswordVisibility, setNewPasswordVisibility] = useState(false);
+    const [confirmNewPasswordVisibility, setConfirmNewPasswordVisibility] = useState(false);
 
     const togglePasswordVisibility = () => {
         setPasswordVisibility(passwordVisibility === false ? true : false);
     };
 
-    const toggleConfirmPasswordVisibility = () => {
-        setConfirmPasswordVisibility(confirmPasswordVisibility === false ? true : false);
+    const toggleNewPasswordVisibility = () => {
+        setNewPasswordVisibility(newPasswordVisibility === false ? true : false);
+    };
+
+    const toggleConfirmNewPasswordVisibility = () => {
+        setConfirmNewPasswordVisibility(confirmNewPasswordVisibility === false ? true : false);
     };
 
     const closeChangePasswordModal = () => {
@@ -52,24 +57,27 @@ const UpdatePasswordModal = () => {
         <div className='modal-container' id='change-password-modal-container'>
             <div className="modal-box max-sm:p-4">
                 <div className='flex flex-col'>
-                    <div className='mb-4'>
-                        <label htmlFor="old-password-input" className='ml-2 cursor-pointer font-extrabold'>Current Password</label>
-                        <input type="password" id='old-password-input' placeholder='Enter current password' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={inputs.oldPassword} onChange={(e) => setInputs({ ...inputs, oldPassword: e.target.value })} />
-                    </div>
-
-                    <label htmlFor="new-password-input" className='ml-2 cursor-pointer font-extrabold'>New Password</label>
+                    <label htmlFor="old-password-input" className='ml-2 cursor-pointer font-extrabold'>Current Password</label>
                     <div className='mb-4 relative'>
-                        <input type={!passwordVisibility ? "password" : "text"} id='new-password-input' placeholder='Enter new password' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={inputs.newPassword} onChange={(e) => setInputs({ ...inputs, newPassword: e.target.value })} />
+                        <input type={!passwordVisibility ? "password" : "text"} id='old-password-input' placeholder='Enter current password' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={inputs.oldPassword} onChange={(e) => setInputs({ ...inputs, oldPassword: e.target.value })} />
                         <div className='eye-icon' onClick={() => togglePasswordVisibility()}>
                             {!passwordVisibility ? <FaEyeSlash /> : <FaEye />}
                         </div>
                     </div>
 
+                    <label htmlFor="new-password-input" className='ml-2 cursor-pointer font-extrabold'>New Password</label>
+                    <div className='mb-4 relative'>
+                        <input type={!newPasswordVisibility ? "password" : "text"} id='new-password-input' placeholder='Enter new password' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={inputs.newPassword} onChange={(e) => setInputs({ ...inputs, newPassword: e.target.value })} />
+                        <div className='eye-icon' onClick={() => toggleNewPasswordVisibility()}>
+                            {!newPasswordVisibility ? <FaEyeSlash /> : <FaEye />}
+                        </div>
+                    </div>
+
                     <label htmlFor="confirm-new-password-input" className='ml-2 cursor-pointer font-extrabold'>Confirm New Password</label>
                     <div className='mb-4 relative'>
-                        <input type={!confirmPasswordVisibility ? "password" : "text"} id='confirm-new-password-input' placeholder='Confirm new password' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={inputs.confirmedNewPassword} onChange={(e) => setInputs({ ...inputs, confirmedNewPassword: e.target.value })} />
-                        <div className='eye-icon' onClick={() => toggleConfirmPasswordVisibility()}>
-                            {!confirmPasswordVisibility ? <FaEyeSlash /> : <FaEye />}
+                        <input type={!confirmNewPasswordVisibility ? "password" : "text"} id='confirm-new-password-input' placeholder='Confirm new password' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={inputs.confirmedNewPassword} onChange={(e) => setInputs({ ...inputs, confirmedNewPassword: e.target.value })} />
+                        <div className='eye-icon' onClick={() => toggleConfirmNewPasswordVisibility()}>
+                            {!confirmNewPasswordVisibility ? <FaEyeSlash /> : <FaEye />}
                         </div>
                     </div>
 
