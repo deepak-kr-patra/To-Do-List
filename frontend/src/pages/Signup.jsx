@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useSignup from '../hooks/useSignup';
 import useScreenWidth from '../zustand/useScreenwidth';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Signup = () => {
@@ -13,7 +14,18 @@ const Signup = () => {
   });
 
   const { loading, signup } = useSignup();
-  const {screenWidth} = useScreenWidth();
+  const { screenWidth } = useScreenWidth();
+
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
+  const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisibility(passwordVisibility === false ? true : false);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisibility(confirmPasswordVisibility === false ? true : false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,11 +75,17 @@ const Signup = () => {
             </div>
 
             <div className='input-div relative mb-8 max-sm:mb-6' id='password-div-signup'>
-              <input type="password" id='password-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.password} onChange={(e) => setUserInputs({ ...userInputs, password: e.target.value })} />
+              <input type={!passwordVisibility ? "password" : "text"} id='password-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.password} onChange={(e) => setUserInputs({ ...userInputs, password: e.target.value })} />
+              <div className='eye-icon' onClick={() => togglePasswordVisibility()}>
+                {!passwordVisibility ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
 
             <div className='input-div relative mb-8 max-sm:mb-6' id='confirmPassword-div-signup'>
-              <input type="password" id='confirmPassword-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.confirmedPassword} onChange={(e) => setUserInputs({ ...userInputs, confirmedPassword: e.target.value })} />
+              <input type={!confirmPasswordVisibility ? "password" : "text"} id='confirmPassword-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.confirmedPassword} onChange={(e) => setUserInputs({ ...userInputs, confirmedPassword: e.target.value })} />
+              <div className='eye-icon' onClick={() => toggleConfirmPasswordVisibility()}>
+                {!confirmPasswordVisibility ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
 
             <div>
