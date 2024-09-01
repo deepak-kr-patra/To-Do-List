@@ -96,6 +96,14 @@ body {
     color: #383838;
 }
 
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 /* styling home page */
 .home-page {
     background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2));

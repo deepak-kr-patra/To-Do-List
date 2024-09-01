@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useLogin from '../hooks/useLogin';
 import useScreenWidth from '../zustand/useScreenwidth';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
@@ -11,6 +12,12 @@ const Login = () => {
 
   const { loading, login } = useLogin();
   const { screenWidth } = useScreenWidth();
+
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisibility(passwordVisibility === false ? true : false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +65,10 @@ const Login = () => {
             </div>
 
             <div className='input-div relative mb-8 max-sm:mb-6' id='password-div-login'>
-              <input type="password" id='password-div-input-login' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input type={!passwordVisibility ? "password" : "text"} id='password-div-input-login' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <div className='eye-icon' onClick={() => togglePasswordVisibility()}>
+                {!passwordVisibility ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
 
             <div>
