@@ -72,10 +72,12 @@ const Signup = () => {
           <form onSubmit={handleSubmit} className='flex flex-col'>
             <div className='input-div relative mb-8 max-sm:mb-6' id='username-div-signup'>
               <input type="text" id='username-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.username} onChange={(e) => setUserInputs({ ...userInputs, username: e.target.value })} />
+              <label htmlFor="username-div-input-signup">Enter Username</label>
             </div>
 
             <div className='input-div relative mb-8 max-sm:mb-6' id='password-div-signup'>
               <input type={!passwordVisibility ? "password" : "text"} id='password-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.password} onChange={(e) => setUserInputs({ ...userInputs, password: e.target.value })} />
+              <label htmlFor="password-div-input-signup">Enter Password</label>
               <div className='eye-icon' onClick={() => togglePasswordVisibility()}>
                 {!passwordVisibility ? <FaEyeSlash /> : <FaEye />}
               </div>
@@ -83,6 +85,7 @@ const Signup = () => {
 
             <div className='input-div relative mb-8 max-sm:mb-6' id='confirmPassword-div-signup'>
               <input type={!confirmPasswordVisibility ? "password" : "text"} id='confirmPassword-div-input-signup' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={userInputs.confirmedPassword} onChange={(e) => setUserInputs({ ...userInputs, confirmedPassword: e.target.value })} />
+              <label htmlFor="confirmPassword-div-input-signup">Confirm Password</label>
               <div className='eye-icon' onClick={() => toggleConfirmPasswordVisibility()}>
                 {!confirmPasswordVisibility ? <FaEyeSlash /> : <FaEye />}
               </div>

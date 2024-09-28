@@ -62,10 +62,12 @@ const Login = () => {
           <form onSubmit={handleSubmit} className='flex flex-col'>
             <div className='input-div relative mb-8 max-sm:mb-6' id='username-div-login'>
               <input type="text" id='username-div-input-login' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <label htmlFor="username-div-input-login">Enter Your Username</label>
             </div>
 
             <div className='input-div relative mb-8 max-sm:mb-6' id='password-div-login'>
               <input type={!passwordVisibility ? "password" : "text"} id='password-div-input-login' className="input input-bordered focus:outline-none focus:border-black w-full h-12" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <label htmlFor="password-div-input-login">Enter Your Password</label>
               <div className='eye-icon' onClick={() => togglePasswordVisibility()}>
                 {!passwordVisibility ? <FaEyeSlash /> : <FaEye />}
               </div>
