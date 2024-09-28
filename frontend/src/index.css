@@ -27,8 +27,7 @@ body {
     background: linear-gradient(45deg, rgba(255, 0, 0, 1), rgba(0, 0, 255, 1));
 }
 
-.input-div::after {
-    content: "";
+.input-div label {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -42,27 +41,7 @@ body {
     cursor: text;
 }
 
-#username-div-signup::after {
-    content: "Enter Username";
-}
-
-#password-div-signup::after {
-    content: "Enter Password";
-}
-
-#confirmPassword-div-signup::after {
-    content: "Confirm Password";
-}
-
-#username-div-login::after {
-    content: "Enter Your Username";
-}
-
-#password-div-login::after {
-    content: "Enter Your Password";
-}
-
-.input-div-clicked::after {
+.input-div-clicked label {
     top: 0;
     color: #111;
     font-size: 13px;
